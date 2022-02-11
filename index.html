@@ -18,7 +18,7 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search"  id="keyword" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchItem">Search</button>
             </form>
-            <button class="btn btn-primary" id="cart"><i class="fas fa-shopping-cart"></i>(0)</button>
+            <button class="btn btn-primary" onclick="clearCart()" id="cart"><i class="fas fa-shopping-cart"></i>(0)</button>
         </nav>
         <div class="row">
             <div class="row col-md-12 mt-2"  id="listBarang" >
@@ -36,7 +36,7 @@
             ]
 
             // release 0 (menampilkan item cards)
-            var listBarang = document.getElementById("listBarang");
+            var listBarang = document.getElementById("listBarang"); // mengambil id nya
 
             function tampilProduk(array)
             {
@@ -52,7 +52,7 @@
                                         <h5 class="card-title" id="itemName">${currentItem[1]}</h5>
                                         <p class="card-text" id="itemDesc">${currentItem[3]}</p>
                                         <p class="card-text">Rp ${currentItem[2]}</p>
-                                        <a href="#" class="btn btn-primary" id="addCart">Tambahkan ke keranjang</a>
+                                        <a href="#" class="btn btn-primary" id="addCart" onClick="addCart()">Tambahkan ke keranjang</a>
                                     </div>
                                 </div>
                             </div>`
@@ -79,7 +79,7 @@
 
             // release 1
             // dengan event buntton klik
-            var formSearch = document.getElementById("formItem");
+            var formSearch = document.getElementById("formItem"); // mengambil id nya
             formSearch.addEventListener("submit", function(event) { // menangkap kejadian ketika sebuah form disubmit
                 event.preventDefault(); // mencegah reload pada halaman saat button submit di klik
                 var keyword = document.getElementById("keyword").value;  // cara menangkap value dari sebuah input
@@ -97,6 +97,26 @@
                 var filterDenganKeyup = filter(value); // panggil function filter
                 tampilProduk(filterDenganKeyup); // akan menampilkan langsung keyword per kata
             });*/
+
+
+            // release 2 (opsional)
+            var keranjang = document.getElementById("cart"); // mengambil id nya
+            var nomorKeranjang = keranjang.value; // akan mengambil nilai dari cart yang ditampung pada variabel keranjang
+
+            // function akan menambah jumlah total keranjang jika tombol button "tambah ke keranjang" di klik
+            function addCart()
+            {
+                nomorKeranjang++; // akan bertambah 1 terus
+                keranjang.innerHTML = `<i class="fas fa-shopping-cart"></i>(${nomorKeranjang})` // akan menampilkan jumlah keranjang yang ditambah
+            }
+
+            // function ketika button keranjang di klik akan clear jumlahnya
+            function clearCart()
+            {
+                keranjang.innerHTML = `<i class="fas fa-shopping-cart"></i>(0)`
+            }
+
+
     </script>
             
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
