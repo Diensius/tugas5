@@ -80,7 +80,7 @@
             // release 1
             // dengan event buntton klik
             var formSearch = document.getElementById("formItem");
-            formSearch.addEventListener("submit", function(event) {
+            formSearch.addEventListener("submit", function(event) { // menangkap kejadian ketika sebuah form disubmit
                 event.preventDefault(); // mencegah reload pada halaman saat button submit di klik
                 var keyword = document.getElementById("keyword").value;  // cara menangkap value dari sebuah input
                 
@@ -97,10 +97,6 @@
                 var filterDenganKeyup = filter(value); // panggil function filter
                 tampilProduk(filterDenganKeyup); // akan menampilkan langsung keyword per kata
             });*/
-
-            
-
-
     </script>
             
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
